@@ -1,0 +1,2 @@
+pom: used project name & url property
+ - now mvn site works

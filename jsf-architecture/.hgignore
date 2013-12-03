@@ -1,0 +1,11 @@
+
+syntax: regexp
+^\.classpath$
+syntax: regexp
+^\.project$
+syntax: regexp
+^\.settings$
+syntax: regexp
+^\.springBeans$
+syntax: regexp
+^target$

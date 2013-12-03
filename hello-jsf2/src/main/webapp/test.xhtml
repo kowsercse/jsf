@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<title><ui:insert name="pageTitle">Page Title</ui:insert>
+</title>
+</head>
+
+<body>
+
+	<h:outputText value="#{sessionScope}" />
+	<br />
+	<h:outputText value="#{studentForm.student}" />
+	<br />
+	<h:outputText value="#{student}" />
+	<h:form>
+		<h:inputText value="#{student.name}" />
+		<h:inputText value="#{student.age}" />
+		
+		<h:commandButton action="#{studentForm.save}" value="Save"/>
+	</h:form>
+
+</body>
+
+</html>

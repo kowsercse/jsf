@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:richx="http://richfaces.org/richx"
+	template="/template/includes/crudPanel.xhtml">
+
+	<ui:define name="crudHeader">
+		<h:outputText value="New Budget Information" />
+	</ui:define>
+	<ui:define name="crudContent">
+		<h:outputText value="${sample}"/>
+		<h:outputText value="${hello}"/>
+		<h:form >
+			<h:inputText id="sname" required="true" requiredMessage="Required" value="#{sample.name}">
+				<a4j:support reRender="ssname,hhname,hname" event="onchange"/>
+			</h:inputText>
+			<h:outputText id="ssname" value="#{sample.name}"/>
+		</h:form>
+		<h:form >
+			<h:inputText id="hname" required="true" requiredMessage="Required" value="#{hello.name}">
+				<a4j:support reRender="ssname,hhname,sname" event="onchange"/>
+			</h:inputText>
+			<h:outputText id="hhname" value="#{hello.name}"/>
+		</h:form>
+	</ui:define>
+</ui:composition>

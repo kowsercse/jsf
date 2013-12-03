@@ -1,0 +1,10 @@
+data/.hgignore.i
+data/pom.xml.i
+data/src/main/java/com/kowsercse/bean/Student.java.i
+data/src/main/java/com/kowsercse/controller/StudentForm.java.i
+data/src/main/java/com/kowsercse/sevice/StudentService.java.i
+data/src/main/webapp/WEB-INF/faces-config.xml.i
+data/src/main/webapp/WEB-INF/web.xml.i
+data/src/main/webapp/hello.xhtml.i
+data/src/main/webapp/index.jsp.i
+data/src/main/webapp/test.xhtml.i

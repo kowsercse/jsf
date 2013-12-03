@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich">
+
+<h:form>
+	
+	<a4j:commandButton	value="Create Student"
+						action="#{studentController.create}" 
+						oncomplete="javascript:Richfaces.showModalPanel('editPanel')"
+						reRender="editPanel" style="width:100px" 
+						>						
+			</a4j:commandButton>
+<a4j:outputPanel >
+	<h:dataTable value="#{studentService.students}" var="student" id="dtable">
+		<rich:column>
+			<f:facet name="header">Name</f:facet>
+			<h:outputText value="#{student.name}" />
+		</rich:column>		
+		<rich:column>
+			<f:facet name="header">Age</f:facet>
+			<h:outputText value="#{student.age}" />
+		</rich:column>
+		<rich:column>
+			<f:facet name="header">Edit</f:facet>
+			<a4j:commandButton value="Edit"
+			    action="#{studentController.edit(student)}"
+				oncomplete="javascript:Richfaces.showModalPanel('editPanel')"
+				reRender="editPanel" style="width:100px" />
+		</rich:column>
+		<rich:column>
+			<f:facet name="header">Delete</f:facet>
+			<h:commandButton value="Delete"
+				action="#{studentController.delete(student)}" />
+		</rich:column>
+	</h:dataTable>
+	</a4j:outputPanel>
+</h:form>
+
+
+<rich:modalPanel height="200" id="editPanel" autosized="true" width="600">
+
+			<f:facet name="header">
+				<h:outputText value="Student"  />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<h:panelGroup>
+					<h:outputText  value="Close" id="hidelink"
+						styleClass="hidelink" />
+					<rich:componentControl for="editPanel" attachTo="hidelink"
+						operation="hide" event="onclick" />
+				</h:panelGroup>
+			</f:facet>
+
+
+
+			<h:form id="stFrom">			
+			<rich:panel>
+			 <a4j:outputPanel ajaxRendered="true">								
+				 <h:panelGrid columns="5">                  
+                   	                     
+	                    <h:outputLabel  value="Name" styleClass="formLabel"/>
+	                    <h:outputText value=":"  />
+	                    <h:outputLabel value="*"  style="color:red"/>	
+	                    <h:inputText id="engName" value="#{studentController.currentStudent.name}"
+	                    	required="true" requiredMessage="Required" />
+	                     <rich:message for="engName" style="color:red; font-style:italic;"/>	                    	                  
+	                     
+	                      <h:outputLabel  value="Age" styleClass="formLabel"/>
+	                    <h:outputText value=":"  />
+	                    <h:outputLabel value="*"  style="color:red"/>	
+	                    <h:inputText id="age" value="#{studentController.currentStudent.age}"
+	                    	required="true" requiredMessage="Required" >
+	                    	
+	                    	</h:inputText>
+	                     <rich:message for="age" style="color:red; font-style:italic;"/>
+	      
+                </h:panelGrid>  
+                                               
+				</a4j:outputPanel>
+
+				<div align="center">
+				
+				<a4j:commandButton value="Save" 
+					action="#{studentController.save}"	reRender="dtable"
+					oncomplete="if (#{facesContext.maximumSeverity==null})  #{rich:component('editPanel')}.hide();return false;"
+					  />
+				<a4j:commandButton value="Close" immediate="true" 	
+			 			onclick="#{rich:component('editPanel')}.hide();return false;" />					
+				</div>
+				</rich:panel>
+				</h:form>
+				</rich:modalPanel>
+
+
+
+</html>

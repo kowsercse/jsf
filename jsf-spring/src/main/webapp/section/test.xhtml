@@ -1,0 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.ajax4jsf.org/rich"
+	xmlns:ajax="https://ajax4jsf.dev.java.net/ajax">
+
+<h:selectOneMenu id="selected" value="1">
+	<f:selectItem itemLabel="Select" itemValue=""></f:selectItem>
+	<f:selectItems itemValue="#{section.id}" itemLabel="#{section.name}" value="#{test.sections}" var="section" />
+</h:selectOneMenu>
+
+</html>
